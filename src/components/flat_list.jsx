@@ -4,8 +4,19 @@ import flats from '../../data/flats.js'
 import Flat from './flat.jsx';
 
 class FlatList extends Component {
+
+  flatAttrs = (flat) => {
+    const optionsBase =  {
+      key: flat.price,
+      drawSelected: this.props.drawSelected
+    }
+    return {...optionsBase, ...flat}
+  }
+
   buildFlats() {
-    return flats.map(flat => <Flat {...flat} />)
+    return flats.map(flat => {
+      return <Flat {...this.flatAttrs(flat)} />
+    })
   }
 
   render() {
