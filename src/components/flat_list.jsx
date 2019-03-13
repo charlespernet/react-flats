@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
+import flats from '../../data/flats.js'
 
 import Flat from './flat.jsx';
 
 class FlatList extends Component {
+  buildFlats() {
+    return flats.map(flat => <Flat {...flat} />)
+  }
+
   render() {
-    const url = 'https://raw.githubusercontent.com/lewagon/flats-boilerplate/master/images/flat3.jpg';
     return(
       <div className='flat-list'>
-        <Flat url={url} />
+        {this.buildFlats()}
       </div>
     )
   }
